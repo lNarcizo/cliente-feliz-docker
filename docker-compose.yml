@@ -1,0 +1,83 @@
+version: '3'
+services:
+    ngnix:
+        build:
+            context: .
+            dockerfile: ./Nginx/Dockerfile
+        volumes:
+            - ./Projeto:/var/www/html
+        ports:
+            - '8080:80'
+        networks:
+            - cliente-feliz-networks
+        depends_on:
+            - php
+    php:
+        build:
+            context: .
+            dockerfile: ./PHP/Dockerfile
+        volumes:
+            - ./Projeto:/var/www/html
+        ports:
+            - '9000:9000'
+        networks:
+            - cliente-feliz-networks
+        depends_on:
+            - mariadb
+    composer:
+        build:
+            context: .
+            dockerfile: ./PHP/composer/Dockerfile
+        container_name: composer
+        volumes:
+            - ./Projeto:/var/www/html
+        working_dir: /var/www/html
+        depends_on:
+            - php
+        networks:
+            - cliente-feliz-networks
+        user: laravel
+        entrypoint: ["composer", "--ignore-platform-reqs"]
+    artisan:
+        build:
+            context: .
+            dockerfile: ./PHP/Dockerfile
+        container_name: artisan
+        volumes:
+            - ./Projeto:/var/www/html
+        working_dir: /var/www/html
+        depends_on:
+            - mariadb
+            - php
+        user: laravel
+        networks:
+            - cliente-feliz-networks
+        entrypoint: ['php', '/var/www/html/artisan']
+    node:
+        build:
+            context: .
+            dockerfile: ./Node/Dockerfile
+        volumes:
+            - ./Projeto:/var/www/html
+        networks:
+            - cliente-feliz-networks
+        depends_on:
+            - php
+            - composer
+    mariadb:
+        image: 'mariadb:latest'
+        environment:
+            MARIADB_USER: '${DB_USERNAME}'
+            MARIADB_PASSWORD: '${DB_PASSWORD}'
+            MARIADB_DATABASE: '${DB_DATABASE}'
+            MARIADB_ROOT_PASSWORD: '2099'
+        volumes:
+            - 'cliente-felizdb:/var/lib/mysql'
+        networks:
+            - cliente-feliz-networks
+networks:
+    cliente-feliz-networks:
+        driver: bridge
+volumes:
+    cliente-felizdb:
+        driver: local
