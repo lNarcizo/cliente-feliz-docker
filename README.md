@@ -1,4 +1,4 @@
-## Clinte Feliz
+## Cliente Feliz
 
 
 ### Começando instalação
