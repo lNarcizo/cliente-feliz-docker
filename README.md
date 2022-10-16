@@ -17,7 +17,7 @@ Crie os arquivos de configuração usando
 cp .env.example .env
 ```
 ```sh
-cp /Projeto/.env.example /Projeto/.env
+cp ./Projeto/.env.example ./Projeto/.env
 ```
 Inicie a aplicação.
 ```sh
