@@ -48,7 +48,7 @@ MAIL_ENCRYPTION
 Depois entre no site da api em https://mailtrap.io,
 após criar sua conta ou realizar o login,
 crie um inbox e selecione a integração laravel e preencha as chaves do .env com os valores
-disponibilizados no site
+disponibilizados lá.
 
 ### Comandos adicionais caso necessite
 
