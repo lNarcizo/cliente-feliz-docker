@@ -35,6 +35,20 @@ Após isso estará finalizado a instalação e inicialização da aplicação e 
 ```
 http://cliente-feliz.com.br:8080
 ```
+### Configurando MailTrap
+Vá para o arquivo .env em `/Projeto/.env` e procure as seguintes chaves
+```
+MAIL_MAILER
+MAIL_HOST
+MAIL_PORT
+MAIL_USERNAME
+MAIL_PASSWORD
+MAIL_ENCRYPTION
+```
+Depois entre no site da api em https://mailtrap.io,
+após criar sua conta ou realizar o login,
+crie um inbox e selecione a integração laravel e preencha as chaves do .env com os valores
+disponibilizados no site
 
 ### Comandos adicionais caso necessite
 
