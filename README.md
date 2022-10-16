@@ -23,14 +23,19 @@ Inicie a aplicação.
 ```sh
 docker-compose up
 ```
-Instale os pacotes do composer
+Instalando os pacotes do composer
 ```sh
 docker-compose run --rm composer install
 ```
-Criando a base de dados e rode as migrations
+Criando a base de dados e rodando as migrations
 ```sh
 docker-compose run --rm artisan migrate
 ```
+Após isso estará finalizado a instalação e inicialização da aplicação e ela estará disponível na url:
+```
+http://cliente-feliz.com.br:8080
+```
+
 ### Comandos adicionais caso necessite
 
 Comandos relacionados ao composer
