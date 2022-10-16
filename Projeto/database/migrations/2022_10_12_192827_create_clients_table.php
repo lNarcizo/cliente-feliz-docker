@@ -17,7 +17,7 @@ class CreateClientsTable extends Migration
             $table->bigIncrements('id');
             $table->string('nome');
             $table->string('cpfCnpj');
-            $table->integer('cep');
+            $table->string('cep');
             $table->string('cidade');
             $table->string('endereco');
             $table->timestamps();
