@@ -1,5 +1,8 @@
 ## Cliente Feliz
 
+### Requerimentos
+Docker
+
 
 ### Começando instalação
 
